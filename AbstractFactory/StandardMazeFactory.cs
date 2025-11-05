@@ -13,11 +13,14 @@ namespace AbstractFactory
     {
         public Maze MakeMaze()
         {
-            Console.WriteLine("Лабиринт создан");
             return new Maze();
         }
         public Wall MakeWall() => new Wall();
-        public  Room MakeRoom(int number) => new Room(number);
+        public Room MakeRoom(int number)
+        {
+            Console.WriteLine("Создание обычной комнаты");
+            return new Room(number);
+        }
         public  Door MakeDoor(Room room1, Room room2) => new Door(room1, room2);
     }
 }

@@ -13,8 +13,9 @@ namespace AbstractFactory
     public class BombedMazeFactory : IMazeFactory
     {
         public BombedMazeFactory() { }
-        public  Maze MakeMaze() => new Maze();
-        public  Wall MakeWall() => new BombedWall();
+
+        public Maze MakeMaze() => new Maze();
+        public Wall MakeWall() => new BombedWall();
         public Room MakeRoom(int number) => new RoomWithBomb(number);
         public Door MakeDoor(Room room1, Room room2) => new Door(room1, room2);
     }
