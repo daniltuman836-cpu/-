@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Builder
 {
-    public class CountingMazeBuilder
+    public class CountingMazeBuilder: IMazeBuilder
     {
         private int _rooms;
         private int _doors;
@@ -35,9 +35,6 @@ namespace Builder
             doors = _doors;
         }
         public void AddWall(int number, Direction dir) { }
-        public Maze GetMaze()
-        {
-            return _curentmaze;
-        }
+      
     }
 }

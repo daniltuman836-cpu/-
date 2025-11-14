@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AbstractFactory
 {
-    public class BombedMazeFactory : IMazeFactory
+    public class BombedMazeFactory : StandardMazeFactory
     {
         public BombedMazeFactory() { }
 
