@@ -14,9 +14,25 @@ namespace AbstractFactory
     {
         public BombedMazeFactory() { }
 
-        public Maze MakeMaze() => new Maze();
-        public Wall MakeWall() => new BombedWall();
-        public Room MakeRoom(int number) => new RoomWithBomb(number);
-        public Door MakeDoor(Room room1, Room room2) => new Door(room1, room2);
+        override public Maze MakeMaze()
+        {
+            Console.WriteLine("----- Вы создали лабиринт с бомбой -----");
+            return new Maze();
+        }
+
+        override public Wall MakeWall()
+        {
+            return new BombedWall();
+        }
+
+        override public Room MakeRoom(int number)
+        {
+            return new RoomWithBomb(number);
+        }
+
+        override public Door MakeDoor(Room room1, Room room2)
+        {
+            return new Door(room1, room2);
+        }
     }
 }

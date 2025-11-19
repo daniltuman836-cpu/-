@@ -12,6 +12,5 @@ namespace MazeLibrary.Walls
         {
             Console.WriteLine("Вы врезались в стену с бомбой");
         }
-        public override string ToString() => "BombedWall";
     }
 }

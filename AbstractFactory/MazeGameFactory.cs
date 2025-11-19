@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MazeLibrary.Walls;
 namespace AbstractFactory
 {
 
@@ -15,10 +16,15 @@ namespace AbstractFactory
         {
             Maze maze = factory.MakeMaze();
             Room room1 = factory.MakeRoom(1);
+            room1.Enter();
             Room room2 = factory.MakeRoom(2);
+            room2.Enter();
             Door door = factory.MakeDoor(room1, room2);
+            door.Enter();
             maze.AddRoom(room1);
             maze.AddRoom(room2);
+            Wall wall = factory.MakeWall();
+            wall.Enter();
             room1.SetSide(Direction.North, factory.MakeWall());
             room1.SetSide(Direction.South, factory.MakeWall());
             room1.SetSide(Direction.East, door);

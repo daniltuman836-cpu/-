@@ -11,16 +11,22 @@ namespace AbstractFactory
 {
     public class StandardMazeFactory : IMazeFactory
     {
-        public Maze MakeMaze()
+        virtual public Maze MakeMaze()
         {
             return new Maze();
         }
-        public Wall MakeWall() => new Wall();
-        public Room MakeRoom(int number)
+        virtual public Wall MakeWall()
+        {
+            return new Wall();
+        }
+        virtual public Room MakeRoom(int number)
         {
             Console.WriteLine("Создание обычной комнаты");
             return new Room(number);
         }
-        public  Door MakeDoor(Room room1, Room room2) => new Door(room1, room2);
+        virtual public Door MakeDoor(Room room1, Room room2)
+        {
+            return new Door(room1, room2);
+        }
     }
 }

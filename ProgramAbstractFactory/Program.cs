@@ -17,7 +17,7 @@ namespace AbstractFactory
             IMazeFactory bombedFactory = new BombedMazeFactory();
             Maze bombedMaze = game.CreateMaze(bombedFactory);
             foreach (var room in bombedMaze.Rooms)
-            {
+            { 
                 Console.WriteLine(room);
             }
             Console.ReadLine();

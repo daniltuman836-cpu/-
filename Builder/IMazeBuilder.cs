@@ -7,9 +7,9 @@ namespace Builder
 {
     public interface IMazeBuilder
     {
-         virtual void BuildMaze() { }
-         virtual void BuildRoom(int room) { }
-         virtual void BuildDoor(int roomFrom, int roomTo) { }
+         void BuildMaze() { }
+         void BuildRoom(int room) { }
+         void BuildDoor(int roomFrom, int roomTo) { }
         
     }
 }

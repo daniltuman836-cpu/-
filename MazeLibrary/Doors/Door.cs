@@ -12,7 +12,7 @@ namespace MazeLibrary.Doors
     {
         private Room Room1 { get; }
         private Room Room2 { get; }
-        protected bool IsOpen { get; } = true;
+        private bool IsOpen { get; } = true;
         public Door(Room room1, Room room2)
         {
             Room1 = room1;

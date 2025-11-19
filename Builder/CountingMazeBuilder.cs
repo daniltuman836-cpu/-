@@ -11,7 +11,6 @@ namespace Builder
     {
         private int _rooms;
         private int _doors;
-        private Maze _curentmaze;
         public CountingMazeBuilder() { }
         public void BuildMaze()
         {
@@ -33,8 +32,6 @@ namespace Builder
         {
             rooms = _rooms;
             doors = _doors;
-        }
-        public void AddWall(int number, Direction dir) { }
-      
+        }      
     }
 }
