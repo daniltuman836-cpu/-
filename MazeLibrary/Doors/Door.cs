@@ -10,26 +10,16 @@ namespace MazeLibrary.Doors
 {
     public class Door : MapSite
     {
-        private Room Room1 { get; }
-        private Room Room2 { get; }
+        private Room _room1 { get; }
+        private Room _room2 { get; }
         private bool IsOpen { get; } = true;
+
         public Door(Room room1, Room room2)
         {
-            Room1 = room1;
-            Room2 = room2;
+            _room1 = room1;
+            _room2 = room2;
         }
-        public Room OtherSideFrom(Room room)
-        {
-            if (room == Room1)
-            {
-                return Room2;
-            }
-            if (room == Room2)
-            {
-                return Room1;
-            }
-            throw new Exception("Ошибка");
-        }
+
         public override void Enter()
         {
             if (IsOpen)
@@ -40,6 +30,11 @@ namespace MazeLibrary.Doors
             {
                 Console.WriteLine("Дверь закрыта!");
             }
+        }
+
+        protected virtual void EnterIsOpen(Room room1, Room room2)
+        {
+            Console.WriteLine("Вы прошли через дверь между {0} и {1} комнатами", _room1.Number, _room2.Number);
         }
     }
 }

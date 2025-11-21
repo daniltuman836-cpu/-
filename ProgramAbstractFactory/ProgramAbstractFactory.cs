@@ -2,7 +2,7 @@
 
 namespace AbstractFactory
 {
-    public class Program
+    public class ProgramAbstractFactory
     {
         static void Main(string[] args)
         {

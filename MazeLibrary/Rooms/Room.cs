@@ -16,8 +16,14 @@ namespace MazeLibrary.Rooms
             Number = roomNo;
         }
 
-        public void SetSide(Direction dir, MapSite site) => _sides[(int)dir] = site;
-        public MapSite GetSide(Direction dir) => _sides[(int)dir];
+        public void SetSide(Direction dir, MapSite site)
+        {
+            _sides[(int)dir] = site;
+        }
+        public MapSite GetSide(Direction dir)
+        {
+            return _sides[(int)dir];
+        }
         public override void Enter()
         {
             Console.WriteLine($"Вы вошли в комнату {Number}");

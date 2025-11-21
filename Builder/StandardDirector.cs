@@ -7,7 +7,7 @@ using MazeLibrary;
 
 namespace Builder
 {
-    public class MazeGameBuilder
+    public class StandardDirector : IMazeDirector
     {
         public void CreateMaze(IMazeBuilder builder)
         {

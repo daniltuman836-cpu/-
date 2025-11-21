@@ -21,6 +21,7 @@ namespace Builder
         }
         public Maze GetMaze()
         {
+            Console.WriteLine("Вы построили лабиринт");
             return _currentMaze;
         }
 

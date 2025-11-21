@@ -12,6 +12,7 @@ namespace Builder
         private int _rooms;
         private int _doors;
         public CountingMazeBuilder() { }
+
         public void BuildMaze()
         {
             _rooms = 0;
