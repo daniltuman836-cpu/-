@@ -625,3 +625,4 @@ FodyWeavers.xsd
 # Дополнительные файлы, созданные Visual Studio
 
 # Конец https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,aspnetcore,jetbrains+all
+/IFactoryMethod/IFactoryMethod.cs
