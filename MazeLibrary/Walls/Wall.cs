@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace MazeLibrary.Walls
 {
-    public class Wall : MapSite
+    public class Wall : IMapSite
     {
-        public override void Enter()
+        public Wall() { }
+
+        public Wall(Wall otherWall) { }
+
+        public virtual IMapSite Clone()
+        {
+            Console.WriteLine("Вы клонировали обычную стену");
+            return new Wall(this);
+        }
+
+        public virtual void Enter()
         {
             Console.WriteLine("Вы врезались в обычную стену.");
         }

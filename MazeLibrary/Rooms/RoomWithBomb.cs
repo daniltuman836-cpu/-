@@ -8,7 +8,15 @@ namespace MazeLibrary.Rooms
 {
     public class RoomWithBomb : Room
     {
-        public RoomWithBomb(int no) : base(no) { }
+        public RoomWithBomb(int number) : base(number) { }
+
+        public RoomWithBomb(RoomWithBomb otherRoom) : base(otherRoom) { }
+
+        public override Room Clone()
+        {
+            Console.WriteLine("Вы клонировали комнату с бомбой");
+            return new RoomWithBomb(this);
+        }
 
         public override void Enter()
         {

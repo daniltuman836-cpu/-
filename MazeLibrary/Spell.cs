@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MazeLibrary
 {
-    internal class Spell
+    public class Spell
     {
         public Spell(string name)
         {

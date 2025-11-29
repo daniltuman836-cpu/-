@@ -14,10 +14,24 @@ namespace MazeLibrary.Rooms
         {
             _spell = new Spell("Fareball");
         }
+        public EnchantedRoom(EnchantedRoom otherRoom) : base(otherRoom)
+        {
+            _spell = otherRoom._spell;
+        }
 
         public void CastSpell()
         {
             Console.WriteLine("Вы использовали заклинание");
+        }
+
+        public override Room Clone()
+        {
+            Console.WriteLine("Вы клонировали магическую комнату");
+            return new EnchantedRoom(this);
+        }
+        public void Initialize(Spell spell)
+        {
+            _spell = spell;
         }
 
         public override void Enter()
