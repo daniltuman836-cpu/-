@@ -8,41 +8,39 @@ namespace State
 {
     public class SoldState : IState
     {
-        private GumballMachine _machine;
+        private int _count;
 
-        public SoldState(GumballMachine machine)
+        public SoldState(int count)
         {
-            _machine = machine;
+            _count = count;
         }
 
-        public void InsertQuarter()
+        public IState InsertQuarter()
         {
-            Console.WriteLine("Пожалуйста, подождите — жевательная резинка уже выдаётся");
+            Console.WriteLine("Пожалуйста, подождите");
+            return this;
         }
 
-        public void EjectQuarter()
+        public IState EjectQuarter()
         {
-            Console.WriteLine("Извините, вы уже повернули рычаг");
+            Console.WriteLine("Вы уже повернули рычаг");
+            return this;
         }
 
-        public void TurnCrank()
+        public IState TurnCrank()
         {
-            Console.WriteLine("Повторный поворот рычага не даст дополнительную жевательную резинку");
+            Console.WriteLine("Повторный поворот не сработает");
+            return this;
         }
 
-        public void Dispense()
+        public IState Dispense()
         {
-            _machine.ReleaseBall();
+            Console.WriteLine("Жевательная резинка выкатывается из автомата");
+            _count--;
 
-            if (_machine.GetCount() == 0)
-            {
-                Console.WriteLine("Жевательная резинка закончилась");
-                _machine.SetState(_machine.GetSoldOutState());
-            }
-            else
-            {
-                _machine.SetState(_machine.GetNoQuarterState());
-            }
+            return _count == 0
+                ? new SoldOutState()
+                : new NoQuarterState(_count);
         }
     }
 

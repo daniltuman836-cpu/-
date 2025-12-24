@@ -8,76 +8,43 @@ namespace State
 {
     public class GumballMachine
     {
-        private IState _soldOutState;
-        private IState _noQuarterState;
-        private IState _hasQuarterState;
-        private IState _soldState;
         private IState _state;
         private int _count;
+
         public GumballMachine(int count)
         {
             _count = count;
-
-            _soldOutState = new SoldOutState(this);
-            _noQuarterState = new NoQuarterState(this);
-            _hasQuarterState = new HasQuarterState(this);
-            _soldState = new SoldState(this);
-            _state = (_count > 0) ? _noQuarterState : _soldOutState;
+            _state = count > 0
+                ? new NoQuarterState(count)
+                : new SoldOutState();
         }
 
-        public void InsertQuarter() 
+        public void InsertQuarter()
         {
-            _state.InsertQuarter();
+            _state = _state.InsertQuarter();
         }
 
-        public void EjectQuarter() 
+        public void EjectQuarter()
         {
-            _state.EjectQuarter();
-        } 
+            _state = _state.EjectQuarter();
+        }
 
         public void TurnCrank()
         {
-            _state.TurnCrank();
-            _state.Dispense();
+            _state = _state.TurnCrank();
+            _state = _state.Dispense();
         }
 
-        public void SetState(IState state)
-        {
-            _state = state;
-        }
-
-        public IState GetSoldOutState()
-        {
-            return _soldOutState;
-        }
-
-        public IState GetNoQuarterState()
-        {
-            return _noQuarterState;
-        }
-
-        public IState GetHasQuarterState()
-        {
-            return _hasQuarterState;
-        }
-
-        public IState GetSoldState()
-        {
-            return _soldState;
-        }
+        public int GetCount() => _count;
 
         public void ReleaseBall()
         {
-            if (_count > 0)
-            {
-                Console.WriteLine("Выдача жевательной резинки\r\n");
-                _count--;
-            }
-        }
+            if (_count <= 0)
+                throw new InvalidOperationException("Жевательная резинка закончилась");
 
-        public int GetCount()
-        { 
-            return _count;
+            Console.WriteLine("Жевательная резинка выкатывается из автомата");
+            _count--;
         }
     }
+
 }

@@ -8,31 +8,28 @@ namespace State
 {
     public class SoldOutState : IState
     {
-        private GumballMachine _machine;
-
-        public SoldOutState(GumballMachine machine)
+        public IState InsertQuarter()
         {
-            _machine = machine;
+            Console.WriteLine("Жевательная резинка закончилась");
+            return this;
         }
 
-        public void InsertQuarter()
+        public IState EjectQuarter()
         {
-            Console.WriteLine("Невозможно вставить монету — жевательная резинка закончилась");
+            Console.WriteLine("Монета не вставлена");
+            return this;
         }
 
-        public void EjectQuarter()
+        public IState TurnCrank()
         {
-            Console.WriteLine("Вы не вставили монету");
+            Console.WriteLine("Автомат пуст");
+            return this;
         }
 
-        public void TurnCrank()
+        public IState Dispense()
         {
-            Console.WriteLine("Вы повернули рычаг, но жевательной резинки нет");
-        }
-
-        public void Dispense()
-        {
-            Console.WriteLine("Жевательная резинка не выдана");
+            Console.WriteLine("Нечего выдавать");
+            return this;
         }
     }
 

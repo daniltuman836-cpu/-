@@ -2,9 +2,10 @@
 {
     public interface IState
     {
-        void InsertQuarter();
-        void EjectQuarter();
-        void TurnCrank();
-        void Dispense();
+            IState InsertQuarter();
+            IState EjectQuarter();
+            IState TurnCrank();
+            IState Dispense();
+        
     }
 }

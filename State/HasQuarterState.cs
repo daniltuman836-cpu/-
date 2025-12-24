@@ -8,34 +8,37 @@ namespace State
 {
     public class HasQuarterState : IState
     {
-        private GumballMachine _machine;
+        private int _count;
 
-        public HasQuarterState(GumballMachine machine)
+        public HasQuarterState(int count)
         {
-            _machine = machine;
+            _count = count;
         }
 
-        public void InsertQuarter()
+        public IState InsertQuarter()
         {
             Console.WriteLine("Вы уже вставили монету");
+            return this;
         }
 
-        public void EjectQuarter()
+        public IState EjectQuarter()
         {
             Console.WriteLine("Монета возвращена");
-            _machine.SetState(_machine.GetNoQuarterState());
+            return new NoQuarterState(_count);
         }
 
-        public void TurnCrank()
+        public IState TurnCrank()
         {
             Console.WriteLine("Вы повернули рычаг");
-            _machine.SetState(_machine.GetSoldState());
+            return new SoldState(_count);
         }
 
-        public void Dispense()
+        public IState Dispense()
         {
-            Console.WriteLine("Жевательная резинка не выдана");
+            Console.WriteLine("Сначала поверните рычаг");
+            return this;
         }
     }
+
 
 }

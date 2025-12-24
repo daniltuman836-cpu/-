@@ -16,6 +16,10 @@ namespace ProgramState
             machine.InsertQuarter();
             machine.TurnCrank();
             machine.InsertQuarter();
+            Console.WriteLine();
+            machine.InsertQuarter();
+            machine.TurnCrank();
+            machine.InsertQuarter();
         }
     }
 }
