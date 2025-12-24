@@ -9,7 +9,8 @@ namespace Observer
     public class TemperatureSensor : ISubject
     {
         public int Temperature { get; private set; }
-        private List<IObserver> _observers = new List<IObserver>();
+
+        private List<IObserver> _observers = new();
 
         public void Attach(IObserver observer)
         {
@@ -39,4 +40,5 @@ namespace Observer
             Notify();
         }
     }
+
 }

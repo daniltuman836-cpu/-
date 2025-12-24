@@ -8,42 +8,19 @@ namespace Observer
 {
     public class AirConditioner : IObserver
     {
-        public void Update(ISubject subject)
+        public void Update(TemperatureSensor sensor)
         {
-            int temp = (subject as TemperatureSensor).Temperature;
-
-            if (temp < 18)
-            {
-                Console.WriteLine("Кондиционер выключен");
-            }
-
-            if (temp >= 18 && temp <= 24)
-            {
-                Console.WriteLine("Кондиционер выключен");
-            }
+            int temp = sensor.Temperature;
 
             if (temp > 24)
             {
                 Console.WriteLine("Кондиционер включён");
             }
-        }
-
-        public void TemperatureChanged(int temperature)
-        {
-            if (temperature < 18)
+            else
             {
-                Console.WriteLine("EVENT >>> Кондиционер выключен");
-            }
-
-            if (temperature >= 18 && temperature <= 24)
-            {
-                Console.WriteLine("EVENT >>> Кондиционер выключен");
-            }
-
-            if (temperature > 24)
-            {
-                Console.WriteLine("EVENT >>> Кондиционер включён");
+                Console.WriteLine("Кондиционер выключен");
             }
         }
     }
+
 }

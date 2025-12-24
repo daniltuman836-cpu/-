@@ -8,28 +8,17 @@ namespace Observer
 {
     public class Windows : IObserver
     {
-        public void Update(ISubject subject)
+        public void Update(TemperatureSensor sensor)
         {
-            int temp = (subject as TemperatureSensor).Temperature;
+            int temp = sensor.Temperature;
+
             if (temp < 18)
             {
                 Console.WriteLine("Окна закрыты");
             }
-            if (temp > 24)
+            else if (temp > 24)
             {
                 Console.WriteLine("Окна открыты");
-            }
-        }
-
-        public void TemperatureChanged(int temperature)
-        {
-            if (temperature < 18)
-            {
-                Console.WriteLine("EVENT >>> Окна закрыты");
-            }
-            if (temperature > 24)
-            {
-                Console.WriteLine("EVENT >>> Окна открыты");
             }
         }
     }
